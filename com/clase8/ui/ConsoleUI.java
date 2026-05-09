@@ -1,18 +1,27 @@
 package com.clase8.ui;
 
-import com.clase8.exceptions.InvalidOptionException;
-import com.clase8.models.Producto;
+import com.clase8.models.Product;
 import com.clase8.utils.ScannerValidator;
 
 import java.util.*;
 
-public  class ConsoleUI {
-    List<Integer> validOptions = new ArrayList<>(
+public class ConsoleUI {
+    private static ConsoleUI instancia;
+    List<Integer> validMenuOptions = new ArrayList<>(
             Arrays.asList(1, 2, 3, 4, 5, 6)
     );
-    public ConsoleUI() {}
 
-    public void showMenu()
+    private ConsoleUI() {
+    }
+
+    public static ConsoleUI getInstancia() {
+        if (instancia == null) {
+            instancia = new ConsoleUI();
+        }
+        return instancia;
+    }
+
+    public void showMenuOptions()
     {
         StringBuilder sb = new StringBuilder();
         sb.append("Menu\n");
@@ -26,29 +35,19 @@ public  class ConsoleUI {
         System.out.println(sb.toString());
     }
 
-    public int getOption() {
-        int opcion;
-        while (true){
-            try{
-                opcion = ScannerValidator.readInteger("Elija una opción(1-7): ");
-                if(!validOptions.contains(opcion)){
-                    throw new InvalidOptionException("Opción ingresada no valida. Intente de nuevo.");
-                }
-                return opcion;
-            }catch(InvalidOptionException e){
-                System.out.println(e.getMessage());
-            }
-        }
+    public void showMenuOptionsInline(){
+        System.out.println("1.Agregar 2.Listar 3.Actualizar 4.Eliminar 5.CrearPedido 6.ListarPedidos 7.Salir");
     }
 
-    public void showProducts(List<Producto> productos)
+    public int getOption() {
+        return ScannerValidator.readInteger("Elija una opción(1-7): ", 1, 7);
+    }
+
+    public void showProducts(List<Product> products)
     {
-        if(productos == null || productos.isEmpty()){
-            System.out.println("No existen productos en la base de datos");
-            return;
-        }
-        for(Producto producto: productos){
-            System.out.println(producto);
+        System.out.println("Listado de productos:");
+        for(Product product : products){
+            System.out.println(product);
         }
     }
 }
