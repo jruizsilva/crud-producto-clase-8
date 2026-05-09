@@ -21,4 +21,8 @@ public class Order {
     public int getId() {
         return id;
     }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
 }
