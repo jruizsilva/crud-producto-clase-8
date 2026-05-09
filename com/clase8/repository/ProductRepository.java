@@ -17,7 +17,7 @@ public class ProductRepository {
         this.products = products;
     }
 
-    public List<Product> getProductos() {
+    public List<Product> findAll() {
         return products;
     }
 
@@ -27,10 +27,6 @@ public class ProductRepository {
 
     public void addProduct(Product product) {
         this.products.add(product);
-    }
-
-    public void removeProduct(Product product) {
-        this.products.remove(product);
     }
 
     public Product getProductById(int id) throws NotFoundException {
@@ -47,5 +43,9 @@ public class ProductRepository {
         product.setName(productName);
         product.setPrice(productPrice);
         product.setStock(stock);
+    }
+
+    public void deleteProduct(Product product) {
+        this.products.remove(product);
     }
 }
