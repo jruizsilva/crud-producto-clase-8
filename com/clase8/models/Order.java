@@ -25,4 +25,9 @@ public class Order {
     public List<OrderItem> getItems() {
         return items;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + id + ", items={" + getItems() + "}}";
+    }
 }

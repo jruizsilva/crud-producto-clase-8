@@ -4,14 +4,14 @@ public class OrderItem {
     private final int id;
     private Product product;
     private int quantity;
-    private int count = 0;
+    private static int count = 0;
     public OrderItem(){
         this.id = ++count;
     }
     public OrderItem(Product product, int quantity) {
+        this.id = ++count;
         this.product = product;
         this.quantity = quantity;
-        this.id = ++count;
     }
 
     public int getId() {
@@ -33,6 +33,6 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "{ID=" + id + " | product=" + product.getName() + " | quantity=" + quantity + "}";
+        return "{ID=" + this.getId() + " | product=" + product.getName() + " | quantity=" + quantity + "}";
     }
 }

@@ -73,7 +73,6 @@ public abstract class DataLoader {
             return;
         }
         List<OrderItem> orderItems1 = new ArrayList<OrderItem>();
-
         for (int i=1; i<products.size(); i+=2) {
             OrderItem orderItem = new OrderItem(products.get(i), i);
             orderItems1.add(orderItem);

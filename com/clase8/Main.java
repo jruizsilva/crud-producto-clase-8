@@ -1,5 +1,7 @@
 package com.clase8;
 
+import com.clase8.models.OrderItem;
+import com.clase8.models.Product;
 import com.clase8.repository.OrderRepository;
 import com.clase8.repository.ProductRepository;
 import com.clase8.services.OrderService;

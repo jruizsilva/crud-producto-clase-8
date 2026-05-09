@@ -1,6 +1,7 @@
 package com.clase8.services;
 
 import com.clase8.models.Order;
+import com.clase8.models.OrderItem;
 import com.clase8.repository.OrderRepository;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class OrderService {
             System.out.println("No se encontraron ordenes en la base de datos");
             return;
         }
+        System.out.println("Lista de pedidos:");
         for(Order order:orders){
-            System.out.println("Lista de ordenes:");
             System.out.println(order);
         }
     }
