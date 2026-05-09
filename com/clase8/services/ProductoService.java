@@ -1,25 +1,36 @@
 package com.clase8.services;
 
-import com.clase8.models.Producto;
-import com.clase8.repository.ProductoRepository;
+import com.clase8.models.Product;
+import com.clase8.repository.ProductRepository;
+import com.clase8.ui.ConsoleUI;
 import com.clase8.utils.ScannerValidator;
 
 import java.util.List;
 
 public class ProductoService {
-    ProductoRepository repository;
+    ProductRepository repository;
+    ConsoleUI console;
 
-    public ProductoService(ProductoRepository productoRepository) {
-        this.repository = productoRepository;
+    public ProductoService(ProductRepository productRepository) {
+        this.repository = productRepository;
+        this.console = ConsoleUI.getInstancia();
     }
 
-    public List<Producto> getProductos() {
-        return repository.getProductos();
+    public void listProducts() {
+        List<Product> products = repository.getProductos();
+        if(products == null || products.isEmpty()){
+            System.out.println("No existen productos en la base de datos");
+            return;
+        }
+        console.showProducts(products);
     }
 
-    public void addProducto() {
-        Producto producto = new Producto();
+    public void createProduct() {
         String productName = ScannerValidator.readString("Ingrese el nombre del producto: ");
-        repository.addProducto(producto);
+        double price = ScannerValidator.readDouble("Ingrese el precio del producto: ", 0);
+        int stock = ScannerValidator.readInteger("Ingrese el stock del producto: ");
+
+        Product product = new Product(productName, price, stock);
+        repository.addProduct(product);
     }
 }
