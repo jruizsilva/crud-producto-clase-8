@@ -18,7 +18,7 @@ public class ProductoService {
     }
 
     public void listProducts() {
-        List<Product> products = repository.getProductos();
+        List<Product> products = repository.findAll();
         if(products == null || products.isEmpty()){
             System.out.println("No existen productos en la base de datos");
             return;
@@ -38,7 +38,7 @@ public class ProductoService {
     public void updateProduct() {
         int productId;
         do{
-            productId = ScannerValidator.readInteger("Ingrese el id del producto: ");
+            productId = ScannerValidator.readInteger("Ingrese el id del producto a editar: ");
             try{
                 Product product = repository.getProductById(productId);
                 System.out.println("Se encontró el producto con el id: " + productId);
@@ -53,5 +53,18 @@ public class ProductoService {
 
 
         }while(repository.getProductById(productId) == null);
+    }
+
+    public void deleteProduct() {
+        int productId;
+        do{
+            productId = ScannerValidator.readInteger("Ingrese el id del producto a eliminar: ");
+            try{
+                Product product = repository.getProductById(productId);
+                repository.deleteProduct(product);
+            }catch (NotFoundException e){
+                System.out.println(e.getMessage());
+            }
+        }while (repository.getProductById(productId) == null);
     }
 }
