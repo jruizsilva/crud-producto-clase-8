@@ -68,8 +68,8 @@ public abstract class ScannerValidator {
         while (true) {
             try {
                 System.out.println(inputMessage);
-                String input = sc.nextLine();
-                if (input == null || input.isEmpty()) {
+                String input = sc.nextLine().trim();
+                if (input.isEmpty()) {
                     throw new InputNotValidException(ERROR_MESSAGE);
                 }
                 return Double.parseDouble(input);
@@ -84,8 +84,8 @@ public abstract class ScannerValidator {
         while (true) {
             try {
                 System.out.println(inputMessage);
-                String input = sc.nextLine();
-                if (input == null || input.isEmpty()) {
+                String input = sc.nextLine().trim();
+                if (input.isEmpty()) {
                     throw new InputNotValidException(ERROR_MESSAGE);
                 }
                 double inputDouble = Double.parseDouble(input);

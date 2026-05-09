@@ -4,6 +4,7 @@ public class OrderItem {
     private final int id;
     private Product product;
     private int quantity;
+    private double total;
     private static int count = 0;
     public OrderItem(){
         this.id = ++count;
@@ -12,6 +13,7 @@ public class OrderItem {
         this.id = ++count;
         this.product = product;
         this.quantity = quantity;
+        this.total = product.getPrice() * quantity;
     }
 
     public int getId() {
@@ -29,6 +31,10 @@ public class OrderItem {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public double getTotal() {
+        return total;
     }
 
     @Override

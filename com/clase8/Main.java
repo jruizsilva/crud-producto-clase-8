@@ -15,7 +15,7 @@ public class Main {
         ProductRepository productRepository = new ProductRepository();
         OrderRepository orderRepository = new OrderRepository();
         ProductService productService = new ProductService(productRepository);
-        OrderService orderService = new OrderService(orderRepository);
+        OrderService orderService = new OrderService(orderRepository, productRepository);
         DataLoader.fillProductList(productRepository);
         DataLoader.fillOrderList(orderRepository, productRepository);
 
