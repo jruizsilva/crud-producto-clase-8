@@ -3,12 +3,14 @@ package com.clase8.repository;
 import com.clase8.exceptions.NotFoundException;
 import com.clase8.models.Producto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoRepository {
     List<Producto> productos;
 
     public ProductoRepository() {
+        this.productos = new ArrayList<>();
     }
 
     public ProductoRepository(List<Producto> productos) {
