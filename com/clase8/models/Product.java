@@ -1,16 +1,16 @@
 package com.clase8.models;
 
-public class Producto {
+public class Product {
     private final int id;
     private String name;
     private double price;
     private int stock;
     private static int count = 0;
 
-    public Producto() {
+    public Product() {
         this.id = ++count;
     }
-    public Producto(String name, double price, int stock) {
+    public Product(String name, double price, int stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;
@@ -40,6 +40,6 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "name=" + name + ", price=" + price + ", stock=" + stock + '}';
+        return "Producto{"+ "ID=" + id + ", name=" + name + ", price=" + price + ", stock=" + stock + '}';
     }
 }
