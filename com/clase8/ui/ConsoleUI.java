@@ -36,7 +36,7 @@ public class ConsoleUI {
     }
 
     public void showMenuOptionsInline(){
-        System.out.println("1.Agregar 2.Listar 3.Actualizar 4.Eliminar 5.CrearPedido 6.ListarPedidos 7.Salir");
+        System.out.println("\n1.Agregar 2.Listar 3.Actualizar 4.Eliminar 5.CrearPedido 6.ListarPedidos 7.Salir");
     }
 
     public int getOption() {
