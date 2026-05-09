@@ -8,11 +8,11 @@ import com.clase8.utils.ScannerValidator;
 
 import java.util.List;
 
-public class ProductoService {
+public class ProductService {
     ProductRepository repository;
     ConsoleUI console;
 
-    public ProductoService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository) {
         this.repository = productRepository;
         this.console = ConsoleUI.getInstancia();
     }

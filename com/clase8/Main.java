@@ -2,7 +2,8 @@ package com.clase8;
 
 import com.clase8.repository.OrderRepository;
 import com.clase8.repository.ProductRepository;
-import com.clase8.services.ProductoService;
+import com.clase8.services.OrderService;
+import com.clase8.services.ProductService;
 import com.clase8.ui.ConsoleUI;
 import com.clase8.utils.DataLoader;
 
@@ -11,7 +12,8 @@ public class Main {
         ConsoleUI console = ConsoleUI.getInstancia();
         ProductRepository productRepository = new ProductRepository();
         OrderRepository orderRepository = new OrderRepository();
-        ProductoService productoService = new ProductoService(productRepository);
+        ProductService productService = new ProductService(productRepository);
+        OrderService orderService = new OrderService(orderRepository);
         DataLoader.fillProductList(productRepository);
         DataLoader.fillOrderList(orderRepository, productRepository);
 
@@ -21,13 +23,16 @@ public class Main {
             opcion = console.getOption();
 
             switch (opcion) {
-                case 1: productoService.createProduct(); break;
-                case 2: productoService.listProducts(); break;
-                case 3: productoService.updateProduct(); break;
+                case 1: productService.createProduct(); break;
+                case 2: productService.listProducts(); break;
+                case 3: productService.updateProduct(); break;
+                case 4: productService.deleteProduct(); break;
+                case 5: orderService.createOrder(); break;
+                case 6: orderService.listOrders(); break;
             }
-            if (opcion != 5) {
+            if (opcion != 7) {
                 console.showMenuOptionsInline();
             }
-        } while (opcion != 5);
+        } while (opcion != 7);
     }
 }
