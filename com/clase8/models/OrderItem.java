@@ -30,4 +30,9 @@ public class OrderItem {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" + "id=" + id + ", product=" + product.getName() + ", quantity=" + quantity + '}';
+    }
 }
