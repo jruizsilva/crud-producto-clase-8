@@ -33,6 +33,6 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "OrderItem{" + "id=" + id + ", product=" + product.getName() + ", quantity=" + quantity + '}';
+        return "{ID=" + id + " | product=" + product.getName() + " | quantity=" + quantity + "}";
     }
 }
