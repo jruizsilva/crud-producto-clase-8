@@ -1,23 +1,23 @@
 package com.clase8.models;
 
 public class Producto {
-    private int id;
+    private final int id;
     private String name;
     private double price;
     private int stock;
+    private static int count = 0;
 
     public Producto() {
+        this.id = ++count;
     }
     public Producto(String name, double price, int stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;
+        this.id = ++count;
     }
     public int getId() {
         return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
     public String getName() {
         return name;
