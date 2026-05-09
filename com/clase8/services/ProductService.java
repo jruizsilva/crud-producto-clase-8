@@ -32,41 +32,42 @@ public class ProductService {
         int stock = ScannerValidator.readInteger("Ingrese el stock del producto: ");
 
         Product product = new Product(productName, price, stock);
-        repository.addProduct(product);
+        repository.save(product);
         System.out.println("Producto agregado "+product);
     }
 
     public void updateProduct() {
         int productId;
+        boolean updated = false;
         do{
             productId = ScannerValidator.readInteger("Ingrese el id del producto a editar: ");
             try{
-                Product product = repository.getProductById(productId);
+                Product product = repository.findById(productId);
                 System.out.println("Editando el producto: "+product);
                 String newProductName = ScannerValidator.readString("Ingrese el nuevo nombre del producto: ");
                 double newProductPrice = ScannerValidator.readDouble("Ingrese el nuevo precio del producto: ");
                 int newStock = ScannerValidator.readInteger("Ingrese el nuevo stock del producto: ");
-                repository.updateProduct(productId, newProductName, newProductPrice, newStock);
-                System.out.println("Producto actualizado "+product);
+                repository.update(productId, newProductName, newProductPrice, newStock);
+                System.out.println("Producto con id "+ productId +" actualizado.");
+                updated = true;
             }catch (NotFoundException e){
                 System.out.println(e.getMessage());
             }
-
-
-        }while(repository.getProductById(productId) == null);
+        }while(!updated);
     }
 
     public void deleteProduct() {
         int productId;
+        boolean deleted = false;
         do{
             productId = ScannerValidator.readInteger("Ingrese el id del producto a eliminar: ");
             try{
-                Product product = repository.getProductById(productId);
-                repository.deleteProduct(product);
-                System.out.println("Producto eliminado "+product);
+                repository.deleteById(productId);
+                System.out.println("Producto con id "+ productId +" eliminado.");
+                deleted = true;
             }catch (NotFoundException e){
                 System.out.println(e.getMessage());
             }
-        }while (repository.getProductById(productId) == null);
+        }while (!deleted);
     }
 }

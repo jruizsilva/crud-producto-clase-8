@@ -13,23 +13,15 @@ public class ProductRepository {
         this.products = new ArrayList<>();
     }
 
-    public ProductRepository(List<Product> products) {
-        this.products = products;
-    }
-
     public List<Product> findAll() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    public void addProduct(Product product) {
+    public void save(Product product) {
         this.products.add(product);
     }
 
-    public Product getProductById(int id) throws NotFoundException {
+    public Product findById(int id) throws NotFoundException {
         for (Product product : products) {
             if (product.getId() == id) {
                 return product;
@@ -38,14 +30,15 @@ public class ProductRepository {
         throw new NotFoundException("No se encontró el producto con el id: " + id);
     }
 
-    public void updateProduct(int productId, String productName, double productPrice, int stock) throws NotFoundException {
-        Product product = this.getProductById(productId);
+    public void update(int productId, String productName, double productPrice, int stock) throws NotFoundException {
+        Product product = this.findById(productId);
         product.setName(productName);
         product.setPrice(productPrice);
         product.setStock(stock);
     }
 
-    public void deleteProduct(Product product) {
+    public void deleteById(int productId) {
+        Product product = this.findById(productId);
         this.products.remove(product);
     }
 }
