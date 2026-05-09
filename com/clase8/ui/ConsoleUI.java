@@ -1,6 +1,7 @@
 package com.clase8.ui;
 
 import com.clase8.exceptions.InvalidOptionException;
+import com.clase8.models.Producto;
 
 import java.util.*;
 
@@ -33,13 +34,20 @@ public  class ConsoleUI {
                 if(!validOptions.contains(opcion)){
                     throw new InvalidOptionException("Opción ingresada no valida. Intente de nuevo.");
                 }
-                return  opcion;
+                return opcion;
             }catch(InputMismatchException e){
                 System.out.println("Opción ingresada no valida. Intente de nuevo.");
                 sc.nextLine();
             }catch(InvalidOptionException e){
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    public void showProducts(List<Producto> productos)
+    {
+        for(Producto producto: productos){
+            System.out.println(producto);
         }
     }
 }
