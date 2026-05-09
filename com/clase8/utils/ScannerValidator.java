@@ -58,7 +58,7 @@ public abstract class ScannerValidator {
                     throw new NumberOutOfRangeException("Numero ingresado fuera de rango. Intente de nuevo.");
                 }
                 return inputInteger;
-            } catch (NumberFormatException | InputNotValidException e) {
+            } catch (NumberOutOfRangeException | NumberFormatException | InputNotValidException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -93,7 +93,7 @@ public abstract class ScannerValidator {
                     throw new NumberOutOfRangeException("Numero ingresado fuera de rango. Intente de nuevo.");
                 }
                 return inputDouble;
-            } catch (NumberFormatException | InputNotValidException e) {
+            } catch (NumberOutOfRangeException | NumberFormatException | InputNotValidException e) {
                 System.out.println(e.getMessage());
             }
         }
