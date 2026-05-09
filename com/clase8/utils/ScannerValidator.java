@@ -2,6 +2,7 @@ package com.clase8.utils;
 
 import com.clase8.exceptions.InputNotValidException;
 import com.clase8.exceptions.NumberOutOfRangeException;
+import com.clase8.ui.ConsoleUI;
 
 import java.util.Scanner;
 
@@ -13,7 +14,8 @@ public abstract class ScannerValidator {
         while (true) {
             try {
                 System.out.println(inputMessage);
-                String input = sc.nextLine().trim();
+                String input = sc.nextLine()
+                                 .trim();
                 if (input.isEmpty()) {
                     throw new InputNotValidException(ERROR_MESSAGE);
                 }
@@ -28,7 +30,8 @@ public abstract class ScannerValidator {
         while (true) {
             try {
                 System.out.println(inputMessage);
-                String input = sc.nextLine().trim();
+                String input = sc.nextLine()
+                                 .trim();
                 if (input.isEmpty()) {
                     throw new InputNotValidException(ERROR_MESSAGE);
                 }
@@ -39,20 +42,23 @@ public abstract class ScannerValidator {
         }
     }
 
-    public static int readInteger(String inputMessage, int minValue, int maxValue) {
+    public static int readInteger(String inputMessage,
+                                  int minValue,
+                                  int maxValue) {
         while (true) {
             try {
                 System.out.println(inputMessage);
-                String input = sc.nextLine().trim();
+                String input = sc.nextLine()
+                                 .trim();
                 if (input.isEmpty()) {
                     throw new InputNotValidException(ERROR_MESSAGE);
                 }
                 int inputInteger = Integer.parseInt(input);
-                if (inputInteger >= minValue && inputInteger <= maxValue) {
+                if (inputInteger < minValue || inputInteger > maxValue) {
                     throw new NumberOutOfRangeException("Numero ingresado fuera de rango. Intente de nuevo.");
                 }
                 return inputInteger;
-            }catch (NumberFormatException | InputNotValidException e) {
+            } catch (NumberFormatException | InputNotValidException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -67,13 +73,14 @@ public abstract class ScannerValidator {
                     throw new InputNotValidException(ERROR_MESSAGE);
                 }
                 return Double.parseDouble(input);
-            }catch (NumberFormatException | InputNotValidException e) {
+            } catch (NumberFormatException | InputNotValidException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    public static double readDouble(String inputMessage, double minValue) {
+    public static double readDouble(String inputMessage,
+                                    double minValue) {
         while (true) {
             try {
                 System.out.println(inputMessage);
@@ -86,7 +93,7 @@ public abstract class ScannerValidator {
                     throw new NumberOutOfRangeException("Numero ingresado fuera de rango. Intente de nuevo.");
                 }
                 return inputDouble;
-            }catch (NumberFormatException | InputNotValidException e) {
+            } catch (NumberFormatException | InputNotValidException e) {
                 System.out.println(e.getMessage());
             }
         }
