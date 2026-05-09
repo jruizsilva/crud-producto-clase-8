@@ -1,23 +1,28 @@
 package com.clase8;
 
-import com.clase8.repository.ProductoRepository;
+import com.clase8.repository.ProductRepository;
 import com.clase8.services.ProductoService;
 import com.clase8.ui.ConsoleUI;
+import com.clase8.utils.DataLoader;
 
 public class Main {
     public static void main(String[] args) {
-        ConsoleUI console = new ConsoleUI();
-        ProductoRepository productoRepository = new ProductoRepository();
-        ProductoService productoService = new ProductoService(productoRepository);
+        ConsoleUI console = ConsoleUI.getInstancia();
+        ProductRepository productRepository = new ProductRepository();
+        ProductoService productoService = new ProductoService(productRepository);
+        DataLoader.fillProductList(productRepository);
 
-        console.showMenu();
+        console.showMenuOptions();
         int opcion;
         do {
             opcion = console.getOption();
 
             switch (opcion) {
-                case 1: productoService.addProducto();
-                case 2: console.showProducts(productoService.getProductos());
+                case 1: productoService.createProduct(); break;
+                case 2: productoService.listProducts(); break;
+            }
+            if (opcion != 5) {
+                console.showMenuOptionsInline();
             }
         } while (opcion != 5);
     }
