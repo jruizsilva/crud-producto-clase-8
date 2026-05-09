@@ -33,7 +33,7 @@ public class ProductService {
 
         Product product = new Product(productName, price, stock);
         repository.addProduct(product);
-        System.out.println("Producto agregado correctamente("+product+")");
+        System.out.println("Producto agregado "+product);
     }
 
     public void updateProduct() {
@@ -47,7 +47,7 @@ public class ProductService {
                 double newProductPrice = ScannerValidator.readDouble("Ingrese el nuevo precio del producto: ");
                 int newStock = ScannerValidator.readInteger("Ingrese el nuevo stock del producto: ");
                 repository.updateProduct(productId, newProductName, newProductPrice, newStock);
-                System.out.println("Producto actualizado correctamente("+product+")");
+                System.out.println("Producto actualizado "+product);
             }catch (NotFoundException e){
                 System.out.println(e.getMessage());
             }
@@ -63,7 +63,7 @@ public class ProductService {
             try{
                 Product product = repository.getProductById(productId);
                 repository.deleteProduct(product);
-                System.out.println("Producto eliminado correctamente("+product+")");
+                System.out.println("Producto eliminado "+product);
             }catch (NotFoundException e){
                 System.out.println(e.getMessage());
             }
