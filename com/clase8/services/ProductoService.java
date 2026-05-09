@@ -1,5 +1,6 @@
 package com.clase8.services;
 
+import com.clase8.exceptions.NotFoundException;
 import com.clase8.models.Product;
 import com.clase8.repository.ProductRepository;
 import com.clase8.ui.ConsoleUI;
@@ -32,5 +33,25 @@ public class ProductoService {
 
         Product product = new Product(productName, price, stock);
         repository.addProduct(product);
+    }
+
+    public void updateProduct() {
+        int productId;
+        do{
+            productId = ScannerValidator.readInteger("Ingrese el id del producto: ");
+            try{
+                Product product = repository.getProductById(productId);
+                System.out.println("Se encontró el producto con el id: " + productId);
+                System.out.println(product);
+                String newProductName = ScannerValidator.readString("Ingrese el nuevo nombre del producto: ");
+                double newProductPrice = ScannerValidator.readDouble("Ingrese el nuevo precio del producto: ");
+                int newStock = ScannerValidator.readInteger("Ingrese el nuevo stock del producto: ");
+                repository.updateProduct(productId, newProductName, newProductPrice, newStock);
+            }catch (NotFoundException e){
+                System.out.println(e.getMessage());
+            }
+
+
+        }while(repository.getProductById(productId) == null);
     }
 }

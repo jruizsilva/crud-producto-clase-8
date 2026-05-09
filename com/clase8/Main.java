@@ -20,6 +20,7 @@ public class Main {
             switch (opcion) {
                 case 1: productoService.createProduct(); break;
                 case 2: productoService.listProducts(); break;
+                case 3: productoService.updateProduct(); break;
             }
             if (opcion != 5) {
                 console.showMenuOptionsInline();

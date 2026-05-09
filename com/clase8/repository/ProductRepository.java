@@ -33,7 +33,7 @@ public class ProductRepository {
         this.products.remove(product);
     }
 
-    public Product getProductById(int id) {
+    public Product getProductById(int id) throws NotFoundException {
         for (Product product : products) {
             if (product.getId() == id) {
                 return product;
@@ -42,14 +42,10 @@ public class ProductRepository {
         throw new NotFoundException("No se encontró el producto con el id: " + id);
     }
 
-    public void updateProduct(int productId,
-                               Product product) {
-        for (Product p : products) {
-            if (p.getId() == productId) {
-                p.setName(product.getName());
-                p.setPrice(product.getPrice());
-                p.setStock(product.getStock());
-            }
-        }
+    public void updateProduct(int productId, String productName, double productPrice, int stock) throws NotFoundException {
+        Product product = this.getProductById(productId);
+        product.setName(productName);
+        product.setPrice(productPrice);
+        product.setStock(stock);
     }
 }
