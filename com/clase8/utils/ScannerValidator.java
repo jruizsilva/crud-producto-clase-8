@@ -89,7 +89,7 @@ public abstract class ScannerValidator {
                     throw new InputNotValidException(ERROR_MESSAGE);
                 }
                 double inputDouble = Double.parseDouble(input);
-                if (inputDouble >= minValue) {
+                if (inputDouble <= minValue) {
                     throw new NumberOutOfRangeException("Numero ingresado fuera de rango. Intente de nuevo.");
                 }
                 return inputDouble;
